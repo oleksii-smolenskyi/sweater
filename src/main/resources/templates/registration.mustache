@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Реєстрація</title>
+</head>
+<body>
+Додати нового користувача
+{{#message}}
+    {{message}}
+{{/message}}
+<form action="/registration" method="post">
+    <div><label> Користувач : <input type="text" name="username"/> </label></div>
+    <div><label> Пароль: <input type="password" name="password"/> </label></div>
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <div><input type="submit" value="Зареєструватися"/></div>
+</form>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.smolenskyi.sweater;
+package com.smolenskyi.sweater.controller;
 
 import java.util.Map;
 import com.smolenskyi.sweater.domain.Message;
@@ -15,21 +15,19 @@ public class GreetingController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @GetMapping
+    @GetMapping("/main")
     public String main(Map<String, Object> model) {
         Iterable<Message> messages = messageRepo.findAll();
         model.put("messages", messages);
         return "main";
     }
 
-    @GetMapping("/greeting")
+    @GetMapping("/")
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Map<String, Object> model) {
-        Iterable<Message> messages = messageRepo.findAll();
-        model.put("massages", messages);
         return "greeting";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
         Message message = new Message(text, tag);
         messageRepo.save(message);

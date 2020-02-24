@@ -2,8 +2,10 @@ package com.smolenskyi.sweater.controller;
 
 import java.util.Map;
 import com.smolenskyi.sweater.domain.Message;
+import com.smolenskyi.sweater.domain.User;
 import com.smolenskyi.sweater.repository.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,8 +30,12 @@ public class GreetingController {
     }
 
     @PostMapping("/main")
-    public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
-        Message message = new Message(text, tag);
+    public String add(@AuthenticationPrincipal User user,
+                      @RequestParam String text,
+                      @RequestParam String tag,
+                      Map<String, Object> model
+    ) {
+        Message message = new Message(text, tag, user);
         messageRepo.save(message);
         Iterable<Message> messages = messageRepo.findAll();
         model.put("messages", messages);

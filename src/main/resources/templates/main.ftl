@@ -7,16 +7,17 @@
     <span><a href="/user">Користувачі</a></span>
 </div>
 <div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <input type="text" name="text" placeholder="Введіть повідомлення"/>
         <input type="text" name="tag" placeholder="Тег"/>
+        <input type="file" name="file">
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button type="submit">Додати</button>
     </form>
 </div>
 <div>Список повідомлень</div>
 <form method="get" action="/main">
-    <input type="text" name="filter" value="${filter}"/>
+    <input type="text" name="filter" value="${filter!ifExists}"/>
     <button type="submit">Шукати</button>
 </form>
 <#list messages as message>
@@ -25,6 +26,11 @@
         <span>${message.text}</span>
         <i>${message.tag}</i>
         <strong>${message.authorName}</strong>
+        <div>
+            <#if message.filename??>
+                <img src="/img/${message.filename}">
+            </#if>
+        </div>
     </div>
 <#else>
     No message

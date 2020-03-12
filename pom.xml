@@ -35,6 +35,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- for save session to DB -->
+<!--        https://docs.spring.io/spring-session/docs/current/reference/html5/guides/boot-jdbc.html-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-jdbc</artifactId>
+        </dependency>
+
         <!-- Mail-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

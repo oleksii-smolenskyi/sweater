@@ -32,6 +32,6 @@
             </#if>
         </ul>
     </div>
-    <div class="navbar-text mr-3">${name}</div>
+    <div class="navbar-text mr-3"><#if user??>${name}<#else>Залогуйтеся</#if></div>
     <@l.logout/>
 </nav>

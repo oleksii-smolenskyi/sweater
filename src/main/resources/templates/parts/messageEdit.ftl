@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile" name="file">
+                    <input type="file" class="custom-file-input" id="customFile" name="file" />
                     <label class="custom-file-label" for="customFile">Оберіть файл</label>
                 </div>
             </div>
